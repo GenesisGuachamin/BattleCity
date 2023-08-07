@@ -1,20 +1,22 @@
 name: Análisis de código
 
 on:
-  push:  # La tarea se activará cada vez que se hagan cambios en el repositorio
+  push:
     branches:
-      - main  # Cambia esto al nombre de tu rama principal
+      - main
 
 jobs:
   code_analysis:
-    runs-on: ubuntu-latest  # El entorno de ejecución para la tarea, en este caso, Ubuntu
+    runs-on: ubuntu-latest
 
     steps:
     - name: Checkout del código
-      uses: actions/checkout@v2  # Acción para clonar el repositorio
+      uses: actions/checkout@v2
 
-    - name: Configurar Java
-      uses: actions/setup-java@v1  # Acción para configurar Java en el entorno
+    - name: Configurar Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '18.16.1'  # Usamos Node.js 16
 
     - name: Descargar SonarQube Scanner
       run: curl -L -o sonar-scanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472.zip
