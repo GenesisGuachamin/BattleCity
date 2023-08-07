@@ -1,0 +1,52 @@
+name: SONAR_TOKEN
+
+on:
+  push:  # La tarea se activará cada vez que se hagan cambios en el repositorio
+    branches:
+      - main  # Cambia esto al nombre de tu rama principal
+
+jobs:
+  code_analysis:
+    runs-on: ubuntu-latest  # El entorno de ejecución para la tarea, en este caso, Ubuntu
+
+    steps:
+    - name: Checkout del código
+      uses: actions/checkout@v2  # Acción para clonar el repositorio
+
+    - name: Configurar Java
+      uses: actions/setup-java@v1  # Acción para configurar Java en el entorno
+
+    - name: Descargar SonarQube Scanner
+      run: curl -L -o sonar-scanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472.zip
+
+    - name: Descomprimir SonarQube Scanner
+      run: unzip -q sonar-scanner.zip
+
+    - name: Ejecutar análisis de código con SonarQube
+      run: sonar-scanner-4.6.2.2472/bin/sonar-scanner -Dsonar.projectKey=mi_proyecto -Dsonar.sources=mi_archivo.jar
+name: SONAR_TOKEN
+
+on:
+  push:  # La tarea se activará cada vez que se hagan cambios en el repositorio
+    branches:
+      - main  # Cambia esto al nombre de tu rama principal
+
+jobs:
+  code_analysis:
+    runs-on: ubuntu-latest  # El entorno de ejecución para la tarea, en este caso, Ubuntu
+
+    steps:
+    - name: Checkout del código
+      uses: actions/checkout@v2  # Acción para clonar el repositorio
+
+    - name: Configurar Java
+      uses: actions/setup-java@v1  # Acción para configurar Java en el entorno
+
+    - name: Descargar SonarQube Scanner
+      run: curl -L -o sonar-scanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472.zip
+
+    - name: Descomprimir SonarQube Scanner
+      run: unzip -q sonar-scanner.zip
+
+    - name: Ejecutar análisis de código con SonarQube
+      run: sonar-scanner-4.6.2.2472/bin/sonar-scanner -Dsonar.projectKey=0cd420785c6b48347aae7e5e69a6e154436e5e3e -Dsonar.sources=BattleCity.jar
